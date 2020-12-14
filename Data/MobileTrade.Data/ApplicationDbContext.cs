@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using MobileTrade.Data.Common.Models;
-    using MobileTrade.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using MobileTrade.Data.Common.Models;
+    using MobileTrade.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -25,6 +24,26 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Make> Makes { get; set; }
+
+        public DbSet<Model> Models { get; set; }
+
+        public DbSet<FuelType> FuelTypes { get; set; }
+
+        public DbSet<TransmissionType> TransmissionTypes { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
+        public DbSet<Feature> Features { get; set; }
+
+        public DbSet<FeatureType> FeatureTypes { get; set; }
+
+        public DbSet<EmissionClass> EmissionClasses { get; set; }
+
+        public DbSet<CarAd> CarAds { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

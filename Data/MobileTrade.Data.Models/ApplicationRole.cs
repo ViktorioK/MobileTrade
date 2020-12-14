@@ -3,9 +3,8 @@ namespace MobileTrade.Data.Models
 {
     using System;
 
-    using MobileTrade.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using MobileTrade.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

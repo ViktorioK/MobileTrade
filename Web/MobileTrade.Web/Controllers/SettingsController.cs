@@ -3,12 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using MobileTrade.Data.Common.Repositories;
     using MobileTrade.Data.Models;
     using MobileTrade.Services.Data;
     using MobileTrade.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {

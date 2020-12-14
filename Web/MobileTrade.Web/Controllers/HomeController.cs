@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using MobileTrade.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using MobileTrade.Web.ViewModels;
 
     public class HomeController : BaseController
     {

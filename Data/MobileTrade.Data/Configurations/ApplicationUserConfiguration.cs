@@ -1,8 +1,8 @@
 ﻿namespace MobileTrade.Data.Configurations
 {
-    using MobileTrade.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using MobileTrade.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

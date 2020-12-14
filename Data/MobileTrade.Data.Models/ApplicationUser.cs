@@ -4,9 +4,8 @@ namespace MobileTrade.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using MobileTrade.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using MobileTrade.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -16,6 +15,7 @@ namespace MobileTrade.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.CarAds = new HashSet<CarAd>();
         }
 
         // Audit info
@@ -33,5 +33,7 @@ namespace MobileTrade.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public IEnumerable<CarAd> CarAds { get; set; }
     }
 }
