@@ -60,6 +60,11 @@
         public virtual Category Category { get; set; }
 
         [Required]
+        public int ColorId { get; set; }
+
+        public Color Color { get; set; }
+
+        [Required]
         public int CountryId { get; set; }
 
         public virtual Country Country { get; set; }

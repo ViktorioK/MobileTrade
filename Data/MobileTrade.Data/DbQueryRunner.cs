@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using MobileTrade.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using MobileTrade.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

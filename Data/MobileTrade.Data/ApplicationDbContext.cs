@@ -37,6 +37,8 @@
 
         public DbSet<Country> Countries { get; set; }
 
+        public DbSet<Color> Colors { get; set; }
+
         public DbSet<Feature> Features { get; set; }
 
         public DbSet<FeatureType> FeatureTypes { get; set; }

@@ -10,8 +10,8 @@ using MobileTrade.Data;
 namespace MobileTrade.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201213235025_AddedDbEntities")]
-    partial class AddedDbEntities
+    [Migration("20201217180303_AddedColorTableAndSeeding")]
+    partial class AddedColorTableAndSeeding
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace MobileTrade.Data.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
@@ -255,6 +255,9 @@ namespace MobileTrade.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Condition")
                         .HasColumnType("int");
 
@@ -319,6 +322,8 @@ namespace MobileTrade.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("ColorId");
+
                     b.HasIndex("CountryId");
 
                     b.HasIndex("EmissionClassId");
@@ -366,6 +371,36 @@ namespace MobileTrade.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("MobileTrade.Data.Models.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Colors");
                 });
 
             modelBuilder.Entity("MobileTrade.Data.Models.Country", b =>
@@ -471,9 +506,7 @@ namespace MobileTrade.Data.Migrations
             modelBuilder.Entity("MobileTrade.Data.Models.FeatureType", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -531,9 +564,7 @@ namespace MobileTrade.Data.Migrations
             modelBuilder.Entity("MobileTrade.Data.Models.Make", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -716,6 +747,12 @@ namespace MobileTrade.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("MobileTrade.Data.Models.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("MobileTrade.Data.Models.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
@@ -759,6 +796,8 @@ namespace MobileTrade.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+
+                    b.Navigation("Color");
 
                     b.Navigation("Country");
 
